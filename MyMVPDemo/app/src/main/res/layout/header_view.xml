@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:padding="20dp"
-        android:text=""
+        android:text="aaaaaaaaaaaaaaaaaaaaa"
         android:textColor="@android:color/holo_blue_bright"
         android:textSize="18sp" />
 

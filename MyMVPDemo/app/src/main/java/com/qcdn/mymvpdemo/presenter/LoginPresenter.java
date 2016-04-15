@@ -21,12 +21,14 @@ public class LoginPresenter implements LoginListener {
     }
 
     public void login() {
+        //其实可以通过构造函数穿过来
         String name = loginView.getName();
         String password = loginView.getPassword();
         if (name.equals("") || password.equals("")) {
             Toast.makeText(context, "name or pass 不能是空", Toast.LENGTH_SHORT).show();
         } else {
             loginView.showDialog();
+            //登录
             loginModel.login(name, password, this);
         }
     }
