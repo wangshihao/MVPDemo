@@ -18,6 +18,7 @@ import com.qcdn.mymvpdemo.view.NewWeatherView;
 import java.util.List;
 
 /**
+ * ListView刷新以及下拉刷新
  * Created by wsh on 2016/3/22.
  */
 public class NewWeatherActivity extends Activity implements NewWeatherView {
@@ -42,8 +43,9 @@ public class NewWeatherActivity extends Activity implements NewWeatherView {
         headerView = View.inflate(this, R.layout.header_view, null);
         activityguidescenicelistview.addHeaderView(headerView);
 
-
+        // presenter 传入参数(NewWeatherView，context)
         newWeatherPresenter = new NewWeatherPresenter(this, this);
+        //请求数据的方法
         newWeatherPresenter.initData();
 
         activityguidescenicerefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

@@ -8,42 +8,42 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 /**
- * AsyncHttpClient ¿ìËÙ¿ª·¢ÍøÂç¿ò¼Ü
+ * AsyncHttpClient å¿«é€Ÿå¼€å‘ç½‘ç»œæ¡†æ¶
  *
  * @author veidy
  */
 public class HttpUtil {
-    private static AsyncHttpClient client = new AsyncHttpClient(); // ÊµÀı»¯¶ÔÏó
+    private static AsyncHttpClient client = new AsyncHttpClient(); // å®ä¾‹åŒ–å¯¹è±¡
 
     private static final String BASE_URL = "http://112.124.120.134/subdomain/8/?url=";
 
     static {
 //        client.addHeader("Content-type", "application/x-www-form-urlencoded");
-        client.setTimeout(5000); // ÉèÖÃÁ´½Ó³¬Ê±£¬Èç¹û²»ÉèÖÃ£¬Ä¬ÈÏÎª10s
+        client.setTimeout(5000); // è®¾ç½®é“¾æ¥è¶…æ—¶ï¼Œå¦‚æœä¸è®¾ç½®ï¼Œé»˜è®¤ä¸º10s
         client.addHeader("Charset", "UTF-8");
     }
 
     /**
      * ***************************** get *******************************************
      */
-    // ÓÃÒ»¸öÍêÕûurl»ñÈ¡Ò»¸östring¶ÔÏó
+    // ç”¨ä¸€ä¸ªå®Œæ•´urlè·å–ä¸€ä¸ªstringå¯¹è±¡
     public static void get(String urlString, AsyncHttpResponseHandler res) {
         client.get(getAbsoluteUrl(urlString), res);
 //        client.get(urlString, res);
     }
 
-    // urlÀïÃæ´ø²ÎÊı
+    // urlé‡Œé¢å¸¦å‚æ•°
     public static void get(String urlString, RequestParams params, AsyncHttpResponseHandler res) {
         client.get(getAbsoluteUrl(urlString), params, res);
     }
 
-    // ²»´ø²ÎÊı£¬»ñÈ¡json¶ÔÏó»òÕßÊı×é
+    // ä¸å¸¦å‚æ•°ï¼Œè·å–jsonå¯¹è±¡æˆ–è€…æ•°ç»„
     public static void get(String urlString, JsonHttpResponseHandler res) {
         // client.get(getAbsoluteUrl(urlString), res);
         client.get(urlString, res);
     }
 
-    // ´ø²ÎÊı£¬»ñÈ¡json¶ÔÏó»òÕßÊı×é
+    // å¸¦å‚æ•°ï¼Œè·å–jsonå¯¹è±¡æˆ–è€…æ•°ç»„
     public static void get(String urlString, RequestParams params, JsonHttpResponseHandler res) {
         client.get(getAbsoluteUrl(urlString), params, res);
         System.out.println(getAbsoluteUrl(urlString));
@@ -51,7 +51,7 @@ public class HttpUtil {
         System.out.println("ss==" + s);
     }
 
-    // ÏÂÔØÊı¾İÊ¹ÓÃ£¬»á·µ»ØbyteÊı¾İ
+    // ä¸‹è½½æ•°æ®ä½¿ç”¨ï¼Œä¼šè¿”å›byteæ•°æ®
     public static void get(String uString, BinaryHttpResponseHandler bHandler) {
         client.get(getAbsoluteUrl(uString), bHandler);
     }
@@ -59,37 +59,37 @@ public class HttpUtil {
     /**
      * *************************** post *************************************
      */
-    // ÓÃÒ»¸öÍêÕûurl»ñÈ¡Ò»¸östring¶ÔÏó
+    // ç”¨ä¸€ä¸ªå®Œæ•´urlè·å–ä¸€ä¸ªstringå¯¹è±¡
     public static void post(String urlString, AsyncHttpResponseHandler res) {
 //        client.post(urlString, res);
         client.post(getAbsoluteUrl(urlString), res);
         System.out.println("urlString=" + urlString);
     }
 
-    // urlÀïÃæ´ø²ÎÊı
+    // urlé‡Œé¢å¸¦å‚æ•°
     public static void post(String urlString, RequestParams params, AsyncHttpResponseHandler res) {
 
         client.post(getAbsoluteUrl(urlString), params, res);
 
     }
 
-    // ²»´ø²ÎÊı£¬»ñÈ¡json¶ÔÏó»òÕßÊı×é
+    // ä¸å¸¦å‚æ•°ï¼Œè·å–jsonå¯¹è±¡æˆ–è€…æ•°ç»„
     public static void post(String urlString, JsonHttpResponseHandler res) {
 
         client.post(getAbsoluteUrl(urlString), res);
 
     }
 
-    // ´ø²ÎÊı£¬»ñÈ¡json¶ÔÏó»òÕßÊı×é
+    // å¸¦å‚æ•°ï¼Œè·å–jsonå¯¹è±¡æˆ–è€…æ•°ç»„
     @SuppressWarnings("static-access")
     public static void post(String urlString, RequestParams params, JsonHttpResponseHandler res) {
-        System.out.println("µØÖ·" + client.getUrlWithQueryString(false, getAbsoluteUrl(urlString), params));
+        System.out.println("åœ°å€" + client.getUrlWithQueryString(false, getAbsoluteUrl(urlString), params));
         client.post(getAbsoluteUrl(urlString), params, res);
         // client.post(urlString, params, res);
 
     }
 
-    // ÏÂÔØÊı¾İÊ¹ÓÃ£¬»á·µ»ØbyteÊı¾İ
+    // ä¸‹è½½æ•°æ®ä½¿ç”¨ï¼Œä¼šè¿”å›byteæ•°æ®
     public static void post(String uString, BinaryHttpResponseHandler bHandler) {
 
         client.post(getAbsoluteUrl(uString), bHandler);
@@ -103,7 +103,7 @@ public class HttpUtil {
 
 
     /**
-     * ÏÂÔØÎÄ¼ş
+     * ä¸‹è½½æ–‡ä»¶
      *
      * @param uString
      * @param file
@@ -113,7 +113,7 @@ public class HttpUtil {
     }
 
     /**
-     * ÉÏ´«ÎÄ¼ş
+     * ä¸Šä¼ æ–‡ä»¶
      *
      * @param uString
      * @param params

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 连接view和model
  * Created by wsh on 2016/3/22.
  */
 public class NewWeatherPresenter implements WeatherListener {
@@ -41,6 +42,7 @@ public class NewWeatherPresenter implements WeatherListener {
 
     @Override
     public void success(WeatherBean weatherBean) {
+        //这个就是请求到的数据
         String wd = weatherBean.getWd();
         String time = weatherBean.getTime();
         String city = weatherBean.getCity();
@@ -53,6 +55,7 @@ public class NewWeatherPresenter implements WeatherListener {
         lists.add(time);
         lists.add(city);
         lists.add(ws);
+        //将数据传回到view层
         newWeatherView.loadSuccess(weatherAdapter, lists);
         newWeatherView.initHeader(city);
         newWeatherView.dismissDialog();
